@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace PrOOxxy\DevStuff\Console\Command;
 
-
 use Magento\Framework\Encryption\EncryptorInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -45,11 +44,10 @@ class Unhash extends Command
 
     protected function configure()
     {
-
         $this->setName('devstuff:unhash')->setDescription('description');
         $this->addArgument(
             'input',
-           InputArgument::REQUIRED,
+            InputArgument::REQUIRED,
             'Decrypt a string with the current crypt key'
         );
         parent::configure();
@@ -60,5 +58,4 @@ class Unhash extends Command
         $hash = $this->encryptor->decrypt($input->getArgument('input'));
         $output->writeln($hash);
     }
-
 }

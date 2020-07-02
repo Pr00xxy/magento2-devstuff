@@ -12,7 +12,6 @@
 
 namespace PrOOxxy\DevStuff\Console\Command;
 
-
 use Magento\Framework\Encryption\EncryptorInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -22,11 +21,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 class Hash extends Command
 {
 
-
     /**
      * @var EncryptorInterface
      */
     private $encryptor;
+
     /**
      * @var null
      */
@@ -43,11 +42,10 @@ class Hash extends Command
 
     protected function configure()
     {
-
         $this->setName('devstuff:hash')->setDescription('description');
         $this->addArgument(
             'input',
-           InputArgument::REQUIRED,
+            InputArgument::REQUIRED,
             'Encrypt a string with the current crypt key'
         );
         parent::configure();
@@ -58,5 +56,4 @@ class Hash extends Command
         $hash = $this->encryptor->encrypt($input->getArgument('input'));
         $output->writeln($hash);
     }
-
 }
